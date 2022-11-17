@@ -10,7 +10,7 @@ const questions = [{
         if (nameInput) {
             return true;
         } else {
-            console.log('Please enter a name for your Repo.')
+            console.log('I dont like to name things either, use asnldf or something.')
             return false;
         }
     }
@@ -35,6 +35,9 @@ const questions = [{
     validate: nameInput => {
         if (nameInput) {
             return true;
+        } else {
+            console.log('Explain to me like Im five');
+            return false;
         }
     }
 },
@@ -59,7 +62,7 @@ const questions = [{
         if (nameInput) {
             return true;
         } else {
-            console.log('Its not just you is it?');
+            console.log('If its just you, say that. Gosh!');
             return false;
         }
     }
