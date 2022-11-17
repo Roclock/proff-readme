@@ -84,8 +84,6 @@ const questions = [{
 }
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -98,8 +96,8 @@ function init() {
         output += `## ${answers.installation}\n`
         output += `## ${answers.usage}\n`
         output += `## ${answers.contributions}\n`
-        output += `## ${answers.licenses}\n`,
-writeToFile ('README.md', output)
+        output += `## ${answers.licenses}\n`
+writeFile ('README.md', output)
     })
     .catch((error) => {
       if (error.isTtyError) {
