@@ -1,4 +1,5 @@
 // TODO: Include packages needed for this application
+import { writeFile } from 'fs';
 import inquirer from 'inquirer';
 // TODO: Create an array of questions for user input
 const questions = [{
@@ -84,14 +85,21 @@ const questions = [{
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer
     .prompt(questions)
     .then((answers) => {
-      // Use user feedback for... whatever!!
+        let output = ''
+        output += `# ${answers.title}\n`
+        output += `## ${answers.description}\n`
+        output += `## ${answers.installation}\n`
+        output += `## ${answers.usage}\n`
+        output += `## ${answers.contributions}\n`
+        output += `## ${answers.licenses}\n`,
+writeToFile ('README.md', output)
     })
     .catch((error) => {
       if (error.isTtyError) {
