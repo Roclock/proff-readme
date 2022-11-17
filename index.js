@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
-import { writeFile } from 'fs';
+import { writeFileSync } from 'fs';
 import inquirer from 'inquirer';
+import {renderLicenseBadge} from './utils/generateMarkdown.js'
 // TODO: Create an array of questions for user input
 const questions = [{
     type: 'input',
@@ -57,7 +58,7 @@ const questions = [{
 },
 {
     type: 'input',
-    name: 'contributors',
+    name: 'contributions',
     message: 'Please provide who helped with your program',
     validate: nameInput => {
         if (nameInput) {
@@ -72,7 +73,7 @@ const questions = [{
     type: 'list',
     name: 'licenses',
     message: 'What kind of license are you using?',
-    choices: ["GPL","Apache","MIT","Rust"],
+    choices: ["GPL","Apache","MIT"],
     validate: nameInput => {
         if (nameInput) {
             return true;
@@ -96,8 +97,9 @@ function init() {
         output += `## ${answers.installation}\n`
         output += `## ${answers.usage}\n`
         output += `## ${answers.contributions}\n`
-        output += `## ${answers.licenses}\n`
-writeFile ('README.md', output)
+        output += `## ${renderLicenseBadge(answers.licenses)}\n`
+
+writeFileSync ('README.md', output)
     })
     .catch((error) => {
       if (error.isTtyError) {
